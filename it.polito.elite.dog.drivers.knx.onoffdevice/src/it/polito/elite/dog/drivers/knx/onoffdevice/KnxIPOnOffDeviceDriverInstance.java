@@ -17,10 +17,16 @@
  */
 package it.polito.elite.dog.drivers.knx.onoffdevice;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+import org.osgi.framework.BundleContext;
+import org.osgi.service.log.LogService;
+
 import it.polito.elite.dog.core.library.model.ControllableDevice;
 import it.polito.elite.dog.core.library.model.DeviceStatus;
 import it.polito.elite.dog.core.library.model.devicecategory.Buzzer;
-import it.polito.elite.dog.core.library.model.devicecategory.ElectricalSystem;
+import it.polito.elite.dog.core.library.model.devicecategory.Actuator;
 import it.polito.elite.dog.core.library.model.devicecategory.Lamp;
 import it.polito.elite.dog.core.library.model.devicecategory.MainsPowerOutlet;
 import it.polito.elite.dog.core.library.model.devicecategory.OnOffOutput;
@@ -33,13 +39,6 @@ import it.polito.elite.dog.core.library.util.LogHelper;
 import it.polito.elite.dog.drivers.knx.network.KnxIPDriverInstance;
 import it.polito.elite.dog.drivers.knx.network.info.KnxIPDeviceInfo;
 import it.polito.elite.dog.drivers.knx.network.interfaces.KnxIPNetwork;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
-import org.osgi.framework.BundleContext;
-import org.osgi.service.log.LogService;
-
 import tuwien.auto.calimero.dptxlator.DPTXlatorBoolean;
 
 /**
@@ -227,7 +226,7 @@ public class KnxIPOnOffDeviceDriverInstance extends KnxIPDriverInstance implemen
 	@Override
 	public void updateStatus()
 	{
-		((ElectricalSystem) this.device).updateStatus();
+		((Actuator) this.device).updateStatus();
 	}
 	
 
